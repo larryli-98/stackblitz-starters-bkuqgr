@@ -1,0 +1,16 @@
+mat-cell.mat-column-title,
+mat-header-cell:first-of-type {
+  min-width: 280px;
+}
+.mat-mdc-menu-item-text {
+  font-size: smaller;
+}
+.mat-mdc-header-row {
+  .mat-column-name {
+    justify-content: center;
+  }
+}
+.mat-column-availability {
+  flex: 0 0 25%;
+  justify-content: center;
+}

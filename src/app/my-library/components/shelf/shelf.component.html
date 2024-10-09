@@ -1,0 +1,45 @@
+<h3>{{ title }}</h3>
+<ng-container *ngIf="items$ | async as items">
+  <mat-table
+    [dataSource]="items"
+    class="mat-elevation-z8"
+    *ngrxLet="currentReader$ | async as currentReader"
+  >
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.name }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="availability">
+      <mat-header-cell *matHeaderCellDef>Availability</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{
+          (element.returnDate
+            | date
+              : (element.readingType === 'book' ? 'shortDate' : 'shortTime')) ||
+            'Now'
+        }}
+      </mat-cell>
+    </ng-container>
+    <mat-header-row
+      *matHeaderRowDef="displayedColumns; sticky: true"
+    ></mat-header-row>
+    <mat-row
+      *matRowDef="let row; columns: displayedColumns"
+      (contextmenu)="onContextMenu($event, row, currentReader)"
+    ></mat-row>
+  </mat-table>
+
+  <div
+    style="visibility: hidden; position: fixed"
+    [style.left]="contextMenuPosition.x"
+    [style.top]="contextMenuPosition.y"
+    [matMenuTriggerFor]="contextMenu"
+  ></div>
+  <mat-menu #contextMenu="matMenu">
+    <ng-template matMenuContent let-item="item">
+      <button *ngIf="!item.returnDate" mat-menu-item (click)="borrow(item)">
+        {{ 'borrow' | uppercase }}
+      </button>
+    </ng-template>
+  </mat-menu>
+</ng-container>

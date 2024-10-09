@@ -1,0 +1,13 @@
+<div class="flex-container" (click)="onMouseClick($event)">
+  <h1>Welcome Kwong's Library!</h1>
+  <div class="flex-content">
+    <app-shelf [items$]="books$" [title]="'Books'"></app-shelf>
+    <app-shelf [items$]="newspapers$" [title]="'Newspapers'"></app-shelf>
+    <app-shelf [items$]="magazines$" [title]="'Magazines'"></app-shelf>
+  </div>
+  <div class="flex-footer">
+    <app-reader name="Lok" readerId="reader-1"></app-reader>
+    <app-reader name="Thor" readerId="reader-2"></app-reader>
+    <app-reader name="Odin" readerId="reader-3"></app-reader>
+  </div>
+</div>

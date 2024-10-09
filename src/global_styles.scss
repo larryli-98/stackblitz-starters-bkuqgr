@@ -1,0 +1,19 @@
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+.mat-mdc-card {
+  width: 100%;
+}
+.mat-mdc-menu-panel {
+  min-width: unset !important;
+  max-width: unset !important;
+}
+.mat-mdc-menu-item-text {
+  font-size: 12px !important;
+  font-weight: 200 !important;
+}
+.mat-mdc-menu-item {
+  min-height: unset !important;
+}
+.mat-mdc-menu-content {
+  padding: unset !important;
+}

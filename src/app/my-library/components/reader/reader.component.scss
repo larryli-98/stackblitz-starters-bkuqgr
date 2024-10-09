@@ -1,0 +1,19 @@
+.mat-mdc-card-header {
+  padding: 16px !important;
+  display: flex;
+  justify-content: center;
+  &.isCheckingout {
+    background-color: #0e4c23;
+    color: white;
+  }
+}
+
+.mat-mdc-list-item-title {
+  font-size: 12px;
+}
+
+.mat-mdc-list-item {
+  justify-content: left;
+  height: 30px !important;
+  text-align: start;
+}

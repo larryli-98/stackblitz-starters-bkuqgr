@@ -1,0 +1,31 @@
+<mat-card *ngrxLet="isCheckingOut$ | async as isCheckingout">
+  <mat-card-header
+    (click)="checkout()"
+    [ngClass]="isCheckingout ? 'isCheckingout' : ''"
+    ><div>{{ name }}</div>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list *ngIf="myReading$ | async as myReadings">
+      <mat-list-item *ngFor="let myReading of myReadings">
+        <span
+          matListItemTitle
+          (contextmenu)="onContextMenu($event, myReading)"
+          >{{ myReading.name }}</span
+        >
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
+<div
+  style="visibility: hidden; position: fixed"
+  [style.left]="contextMenuPosition.x"
+  [style.top]="contextMenuPosition.y"
+  [matMenuTriggerFor]="contextMenu"
+></div>
+<mat-menu #contextMenu="matMenu">
+  <ng-template matMenuContent let-item="item">
+    <button *ngIf="item.returnDate" mat-menu-item (click)="returning(item)">
+      {{ 'return' | uppercase }}
+    </button>
+  </ng-template>
+</mat-menu>
